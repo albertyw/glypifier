@@ -1,22 +1,27 @@
-function toBool(str)
-{
+function toBool(str) {
    if ("false" === str)
       return false;
-   else 
+   else
       return str;
 }
 
+// Save options
 function saveOptions() {
-	chrome.storage.local.set({'newTabFlag': toBool(document.getElementById("newTabChx").checked)}, function() {
-		chrome.storage.local.get('newTabFlag', function(items) {  })
-	});
+  var newTabFlag = toBool(document.getElementById("newTabChx").checked);
+  var autoPdf = toBool(document.getElementById("autoPdf").checked);
+  var keys = {};
+  keys['newTabFlag'] = newTabFlag;
+  keys['autoPdf'] = autoPdf;
+	chrome.storage.local.set(keys);
 }
 
+// Load options
 function restoreOptions() {
-	var tabFlag;
-	chrome.storage.local.get('newTabFlag', function(items) { 
-		tabFlag = items['newTabFlag']
+	chrome.storage.local.get(['newTabFlag', 'autoPdf'], function(items) {
+		var tabFlag = items['newTabFlag'];
+		var autoPdf = items['autoPdf'];
 		document.getElementById("newTabChx").checked = tabFlag;
+		document.getElementById("autoPdf").checked = autoPdf;
 	});
 }
 
