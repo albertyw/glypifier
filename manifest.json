@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
 
-	"name": "Glype extension",
-	"description": "Glype ext",
+	"name": "Glypifier",
+	"description": "Button to use Glype proxy to access the current web page",
 	"version": "1.0",
 	"background": {
 		"persistent": false,
