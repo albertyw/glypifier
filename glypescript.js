@@ -4,7 +4,8 @@ chrome.browserAction.onClicked.addListener(function() {
 		var newTab = false;
 		var glypeUrl = "http://albertyw.mit.edu/codes/glype/browse.php?u="+tabUrl;
 		if (newTab) {
-			chrome.tabs.create({'url': glypeUrl});
+			currIndex = tabs[0].index;
+			chrome.tabs.create({'url': glypeUrl, 'index': currIndex+1});
 		} else {
 			chrome.tabs.update(tabs[0].id, {'url': glypeUrl});
 		}
