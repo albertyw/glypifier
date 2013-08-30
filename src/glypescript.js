@@ -6,11 +6,15 @@ chrome.browserAction.onClicked.addListener(function() {
 		if (newTab) {
 			currIndex = tabs[0].index;
 			chrome.tabs.create({'url': glypeUrl, 'index': currIndex+1}, function(tab) {
-				chrome.tabs.executeScript(tab.id, { file: "updatepage.js" });
+				chrome.tabs.executeScript(tab.id, { file: "updatepage.js" }, function(tab) {
+					chrome.tabs.executeScript(tab.id, { file: "updatepageagain.js" });
+				});
 			});
 		} else {
 			chrome.tabs.update(tabs[0].id, {'url': glypeUrl}, function(tab) {
-				chrome.tabs.executeScript(tab.id, { file: "updatepage.js" });
+				chrome.tabs.executeScript(tab.id, { file: "updatepage.js" }, function(tab) {
+					chrome.tabs.executeScript(tab.id, { file: "updatepageagain.js" });
+				});
 			});
 		}
 	});

@@ -1,6 +1,7 @@
 function updatePage() {
 	var currUrl = window.location.href;
 	var pdfUrl = '';
+	
 	if (currUrl.indexOf('sciencedirect') !== -1) {
 		pdfUrl = document.getElementById('pdfLink').href;
 	}
