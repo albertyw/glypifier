@@ -1,5 +1,6 @@
 {
 	"manifest_version": 2,
+	"icons": { "128": "icon.png" },
 
 	"name": "Glypifier",
 	"description": "Button to use Glype proxy to access the current web page",
