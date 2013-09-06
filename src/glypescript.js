@@ -10,11 +10,15 @@ chrome.browserAction.onClicked.addListener(function() {
       if (newTab) {
         currIndex = tabs[0].index;
         chrome.tabs.create({'url': glypeUrl, 'index': currIndex+1}, function(tab) {
-          if(autoPdf) chrome.tabs.executeScript(tab.id, { file: "updatepage.js" });
+          if(autoPdf) chrome.tabs.executeScript(tab.id, { file: "updatepage.js" }, function(tab) {
+            chrome.tabs.executeScript(tab.id, { file: "updatepageagain.js" });
+          });
         });
       } else {
         chrome.tabs.update(tabs[0].id, {'url': glypeUrl}, function(tab) {
-          if(autoPdf) chrome.tabs.executeScript(tab.id, { file: "updatepage.js" });
+          if(autoPdf) chrome.tabs.executeScript(tab.id, { file: "updatepage.js" }, function(tab) {
+            chrome.tabs.executeScript(tab.id, { file: "updatepageagain.js" });
+          });
         });
       }
 		});
