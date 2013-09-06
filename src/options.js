@@ -12,12 +12,12 @@ function saveOptions() {
   var keys = {};
   keys['newTabFlag'] = newTabFlag;
   keys['autoPdf'] = autoPdf;
-	chrome.storage.local.set(keys);
+	chrome.storage.sync.set(keys);
 }
 
 // Load options
 function restoreOptions() {
-	chrome.storage.local.get(['newTabFlag', 'autoPdf'], function(items) {
+	chrome.storage.sync.get(['newTabFlag', 'autoPdf'], function(items) {
 		var tabFlag = items['newTabFlag'];
 		var autoPdf = items['autoPdf'];
 		document.getElementById("newTabChx").checked = tabFlag;
