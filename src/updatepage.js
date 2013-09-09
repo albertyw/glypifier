@@ -20,6 +20,9 @@ function updatePage() {
 	else if (currUrl.indexOf('pnas.org') !== -1) {
 		pdfUrl = currUrl.replace('short','full.pdf');
 	}
+	else if (currUrl.indexOf('nature.com') !== -1) {
+		pdfUrl = currUrl.replace('full','pdf').replace('.html','.pdf');
+	}
 	else if (currUrl.indexOf('jstor.org') !== -1) {
 
 	}
